@@ -12,5 +12,12 @@ navigation:
     url: /contact/
 social:
   twitter: https://twitter.com/xuguangqi_ming
+# SEO 设置
+seo_title: My Cool Babylon App
+seo_description: A high-tech showcase of my Babylon.js skills
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
 
 
