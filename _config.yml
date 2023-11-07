@@ -2,8 +2,8 @@ theme: jekyll-theme-minimal
 title: My Cool Babylon App
 description: My first Babylon.js app with a tech-savvy theme
 # SEO 设置
-seo_title: My Cool Babylon App
-seo_description: A high-tech showcase of my Babylon.js skills
+# seo_title: My Cool Babylon App
+# seo_description: A high-tech showcase of my Babylon.js skills
 
 
 
