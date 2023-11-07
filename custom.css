@@ -1,0 +1,67 @@
+/* 基本体态调整 */
+body {
+    font-family: 'Roboto', sans-serif; /* 现代化字体 */
+    background-color: #1a1a1a; /* 深色背景 */
+    color: #ddd; /* 浅色文本 */
+    line-height: 1.6; /* 行高 */
+}
+
+/* 链接样式 */
+a {
+    color: #4d88ff; /* 明亮的链接颜色 */
+    text-decoration: none; /* 移除下划线 */
+}
+
+a:hover {
+    color: #ffa500; /* 鼠标悬停时的颜色变化 */
+}
+
+/* 导航栏样式 */
+nav {
+    background-color: #333; /* 导航栏背景色 */
+    padding: 10px; /* 内边距 */
+}
+
+nav ul {
+    list-style: none; /* 移除列表标记 */
+    padding: 0;
+    margin: 0;
+    display: flex; /* 使用 Flexbox 布局 */
+    justify-content: center; /* 居中排列项目 */
+}
+
+nav ul li {
+    margin: 0 15px; /* 项目间距 */
+}
+
+nav ul li a {
+    color: #fff; /* 白色链接 */
+}
+
+/* 标题样式 */
+h1, h2, h3, h4, h5, h6 {
+    color: #4d88ff; /* 统一标题颜色 */
+}
+
+/* 代码块样式 */
+pre, code {
+    background-color: #282c34; /* 深色背景 */
+    color: #dcdcdc; /* 浅色字体 */
+    border-radius: 5px; /* 圆角边框 */
+    padding: 10px; /* 内边距 */
+}
+
+/* 脚注样式 */
+footer {
+    background-color: #333; /* 底部背景色 */
+    color: #fff; /* 文本颜色 */
+    text-align: center; /* 文本居中 */
+    padding: 20px 0; /* 上下内边距 */
+}
+
+/* 响应式调整 */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column; /* 移动设备上垂直堆叠导航项 */
+    }
+}
