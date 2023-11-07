@@ -1,16 +1,9 @@
 theme: jekyll-theme-minimal
 title: My Cool Babylon App
 description: My first Babylon.js app with a tech-savvy theme
-# 在这里指定自定义 CSS 文件的路径
-style: ./custom.css
-social:
-  twitter: https://twitter.com/xuguangqi_ming
 # SEO 设置
 seo_title: My Cool Babylon App
 seo_description: A high-tech showcase of my Babylon.js skills
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
 
 
 
