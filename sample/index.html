@@ -73,7 +73,24 @@
             camera.attachControl(canvas, true);
             const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
             const ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 10, height: 10 }, scene);
+            const groundMaterial = new BABYLON.StandardMaterial("groundMaterial", scene);
+            groundMaterial.diffuseColor = new BABYLON.Color4(1, 0, 0, 0.3); // red color
+            ground.material = groundMaterial;
 
+            const box = BABYLON.MeshBuilder.CreateBox("box", {});
+
+            box.scaling.x = 2;
+            box.scaling.y = 1.5;
+            box.scaling.z = 3;
+
+
+            box.scaling = new BABYLON.Vector3(2, 1.5, 3);
+            box.position = new BABYLON.Vector3(-2, 4.2, 0.1);
+
+            const boxMaterial = new BABYLON.StandardMaterial("boxMaterial", scene);
+            boxMaterial.diffuseColor = new BABYLON.Color4(0, 0, 1, 1); // blue color
+            box.material = boxMaterial;
+            box.rotation.y = Math.PI / 4;
             return scene;
         }
 
