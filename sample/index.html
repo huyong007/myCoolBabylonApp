@@ -80,7 +80,7 @@
             const box = BABYLON.MeshBuilder.CreateBox("box", {});
 
             box.scaling.x = 2;
-            box.scaling.y = 1.5;
+            box.scaling.y = 1;
             box.scaling.z = 3;
 
 
@@ -91,6 +91,20 @@
             boxMaterial.diffuseColor = new BABYLON.Color4(0, 0, 1, 1); // blue color
             box.material = boxMaterial;
             box.rotation.y = Math.PI / 4;
+
+            const roof = BABYLON.MeshBuilder.CreateCylinder("roof", { diameter: 1.5, height: 1.2, tessellation: 3 });
+            roof.scaling.x = 0.75;
+            roof.rotation.z = Math.PI / 2;
+
+            roof.position.y = 1.72
+
+
+
+
+
+
+
+
             return scene;
         }
 
