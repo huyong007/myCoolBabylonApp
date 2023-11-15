@@ -66,49 +66,99 @@
         const createScene = function () {
             const scene = new BABYLON.Scene(engine);
             BABYLON.SceneLoader.ImportMeshAsync("", "https://assets.babylonjs.com/meshes/", "box.babylon").then((result) => {
-                const box = result.meshes[0];
-                box.position.y = 1;
+
+                const boxByAsyncMesh = result.meshes[0];
+                boxByAsyncMesh.position.y = 0.5;
+
+
+                const faceUV = [];
+                faceUV[0] = new BABYLON.Vector4(0.0, 0.5, 0.5, 1.0);
+                faceUV[1] = new BABYLON.Vector4(0.5, 0.5, 1.0, 1.0);
+                faceUV[2] = new BABYLON.Vector4(0.5, 0.0, 1.0, 0.5);
+                faceUV[3] = new BABYLON.Vector4(0.0, 0.0, 0.5, 0.5);
+                faceUV[4] = new BABYLON.Vector4(0.0, 0.5, 0.5, 0.0);
+                faceUV[5] = new BABYLON.Vector4(0.5, 1.0, 1.0, 0.5);
+
+                const options = {
+                    width: 1,
+                    height: 1,
+                    depth: 1,
+                    faceUV: faceUV
+                }
+
+                const boxWithRemoteTextureAndFaceUV = BABYLON.MeshBuilder.CreateBox("box", options);
+
+
+
+                const material = new BABYLON.StandardMaterial("boxMaterial");
+                material.diffuseTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/floor.png");
+                boxWithRemoteTextureAndFaceUV.material = material;
+
+                boxWithRemoteTextureAndFaceUV.position = new BABYLON.Vector3(2, 2, 0.1);
             });
+
             const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 15, new BABYLON.Vector3(0, 0, 0), scene);
             camera.attachControl(canvas, true);
+
             const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+
             const ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 10, height: 10 }, scene);
             const groundMaterial = new BABYLON.StandardMaterial("groundMaterial", scene);
             groundMaterial.diffuseColor = new BABYLON.Color4(1, 0, 0, 0.3); // red color
             ground.material = groundMaterial;
 
-            const box = BABYLON.MeshBuilder.CreateBox("box", {});
+            const boxTest = BABYLON.MeshBuilder.CreateBox("box", {});
 
-            box.scaling.x = 2;
-            box.scaling.y = 1;
-            box.scaling.z = 3;
+            boxTest.scaling.x = 2;
+            boxTest.scaling.y = 1;
+            boxTest.scaling.z = 3;
 
 
-            box.scaling = new BABYLON.Vector3(2, 1.5, 3);
-            box.position = new BABYLON.Vector3(-2, 4.2, 0.1);
+            boxTest.scaling = new BABYLON.Vector3(2, 1.5, 3);
+            boxTest.position = new BABYLON.Vector3(-2, 4.2, 0.1);
 
             const boxMaterial = new BABYLON.StandardMaterial("boxMaterial", scene);
             boxMaterial.diffuseColor = new BABYLON.Color4(0, 0, 1, 1); // blue color
-            box.material = boxMaterial;
-            box.rotation.y = Math.PI / 4;
+            boxTest.material = boxMaterial;
+            boxTest.rotation.y = Math.PI / 4;
 
             const roof = BABYLON.MeshBuilder.CreateCylinder("roof", { diameter: 1.5, height: 1.2, tessellation: 3 });
             roof.scaling.x = 0.75;
             roof.rotation.z = Math.PI / 2;
-
-            roof.position.y = 1.72
-
-
-
+            roof.position.y = 1.25
             const roofMat = new BABYLON.StandardMaterial("roofMat");
-            roofMat.diffuseTexture = new BABYLON.Texture("https://assets.babylonjs.com/environments/roof.jpg",scene);
+            roofMat.diffuseTexture = new BABYLON.Texture("https://assets.babylonjs.com/environments/roof.jpg", scene);
+            roof.material = roofMat;
+
+
             const boxMat = new BABYLON.StandardMaterial("boxMat");
             boxMat.diffuseTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/floor.png");
-
-            roof.material = roofMat;
-            box.material = boxMat;
+            boxTest.material = boxMat;
 
 
+            const dashMaterial = new BABYLON.StandardMaterial("dashMat", scene);
+            dashMaterial.diffuseColor = new BABYLON.Color3(1, 1, 0);
+            dashMaterial.backFaceCulling = false;
+
+            const lineMesh = BABYLON.MeshBuilder.CreateDashedLines("laneSampleLine", {
+                points: [new BABYLON.Vector3(-2, 1, 0), new BABYLON.Vector3(2, 3, 0)],
+                dashSize: 3,
+                gapSize: 1,
+                updateble: false
+            }, scene);
+
+            lineMesh.material = dashMaterial;
+
+
+            const lineMesh2 = BABYLON.MeshBuilder.CreateDashedLines("laneSampleLine1", {
+                points: [new BABYLON.Vector3(-2, -1, 0), new BABYLON.Vector3(2, -3, 0)],
+                dashSize: 3,
+                gapSize: 1,
+                updateble: false
+            }, scene);
+
+            lineMesh2.color = new BABYLON.Color3(58 / 255, 129 / 255, 139 / 255); 
+            lineMesh2.alpha = 1;
 
 
 
